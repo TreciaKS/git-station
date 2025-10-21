@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { GithubService } from '../../core/github.service';
 import { SearchSignalService } from '../../core/signals/search-signal.service';
 import { GithubUser, GithubRepo } from '../../core/models';
+import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.component'
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RepoCardComponent],
   templateUrl: './user-dashboard.component.html',
 })
 export class UserDashboardComponent {
@@ -22,11 +23,11 @@ export class UserDashboardComponent {
     private gh: GithubService,
     private searchSignal: SearchSignalService
   ) {
-    // React to global search updates
     effect(() => {
-      const query = this.searchSignal.searchTerm();
-      if (query && query !== this.username) {
-        this.username = query;
+      const term = this.searchSignal.searchTerm();
+      const context = this.searchSignal.searchContext();
+      if (context === 'user' && term) {
+        this.username = term;
         this.loadUser();
       }
     });

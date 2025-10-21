@@ -11,16 +11,24 @@ import { SearchSignalService } from '../../../core/signals/search-signal.service
 })
 export class SearchBarComponent implements OnInit {
   query = '';
+  context: 'user' | 'repo' | 'issue' = 'user';
+  private debounceTimer?: ReturnType<typeof setTimeout>;
 
   constructor(private searchSignal: SearchSignalService) {}
 
   ngOnInit(): void {
-    // Sync if signal already has a value
     this.query = this.searchSignal.searchTerm();
   }
 
-  onSearch(): void {
-    this.searchSignal.updateSearch(this.query);
+  onInputChange(): void {
+    clearTimeout(this.debounceTimer);
+    this.debounceTimer = setTimeout(() => {
+      this.searchSignal.updateSearch(this.query, this.context);
+    }, 500);
+  }
+
+  onContextChange(): void {
+    this.searchSignal.updateSearch(this.query, this.context);
   }
 
   clear(): void {

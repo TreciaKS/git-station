@@ -23,9 +23,10 @@ export class StarterFinderComponent {
     private searchSignal: SearchSignalService
   ) {
     effect(() => {
-      const lang = this.searchSignal.searchTerm();
-      if (lang) {
-        this.language = lang;
+      const term = this.searchSignal.searchTerm();
+      const context = this.searchSignal.searchContext();
+      if (context === 'issue' && term) {
+        this.language = term;
         this.search();
       }
     });

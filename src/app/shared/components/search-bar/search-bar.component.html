@@ -1,21 +1,27 @@
 <div
-  class="flex items-center gap-2 px-3 py-2 bg-white border rounded shadow-sm"
+  class="flex items-center gap-3 px-3 py-2 bg-white border rounded shadow-sm"
 >
+  <!-- Context selector -->
+  <select
+    [(ngModel)]="context"
+    (change)="onContextChange()"
+    class="px-2 py-1 text-sm border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500"
+  >
+    <option value="user">Users</option>
+    <option value="repo">Repos</option>
+    <option value="issue">Issues</option>
+  </select>
+
+  <!-- Search input -->
   <input
     type="text"
     [(ngModel)]="query"
-    (keyup.enter)="onSearch()"
-    placeholder="Search GitHub users, languages, etc..."
+    (input)="onInputChange()"
+    placeholder="Search GitHub..."
     class="flex-1 text-sm outline-none"
   />
 
-  <button
-    (click)="onSearch()"
-    class="bg-blue-600 text-white text-sm px-3 py-1.5 rounded hover:bg-blue-700 transition"
-  >
-    Search
-  </button>
-
+  <!-- Clear button -->
   <button
     *ngIf="query"
     (click)="clear()"
@@ -24,4 +30,10 @@
   >
     ✕
   </button>
+
+  <p class="mt-1 text-xs text-right text-gray-400">
+    Searching for <span class="font-semibold">{{ context }}</span> → "{{
+      query || "..."
+    }}"
+  </p>
 </div>
