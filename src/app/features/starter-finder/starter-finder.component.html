@@ -1,0 +1,29 @@
+<div class="max-w-4xl mx-auto">
+  <div class="mb-4">
+    <label class="block text-sm text-gray-600"
+      >Filter by language (optional)</label
+    >
+    <div class="flex gap-2 mt-2">
+      <input
+        [(ngModel)]="language"
+        placeholder="e.g. javascript"
+        class="flex-1 px-3 py-2 border rounded"
+      />
+      <button
+        (click)="search()"
+        class="px-4 py-2 text-white bg-green-600 rounded"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-sm text-gray-500">Searching GitHub...</div>
+
+  <app-issue-card *ngFor="let issue of issues" [issue]="issue"></app-issue-card>
+
+  <div *ngIf="!issues?.length && !loading" class="text-sm text-gray-500">
+    No results yet. Try searching.
+  </div>
+  <div *ngIf="error" class="mt-4 text-red-500">{{ error }}</div>
+</div>

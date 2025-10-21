@@ -1,0 +1,29 @@
+<div class="max-w-4xl mx-auto">
+  <div class="mb-4">
+    <label class="block text-sm text-gray-600">GitHub username</label>
+    <div class="flex gap-2 mt-2">
+      <input
+        [(ngModel)]="username"
+        (keyup.enter)="loadUser()"
+        class="flex-1 px-3 py-2 border rounded"
+        placeholder="e.g. torvalds"
+      />
+      <button
+        (click)="loadUser()"
+        class="px-4 py-2 text-white bg-blue-600 rounded"
+      >
+        Load
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-sm text-gray-500">Loading...</div>
+
+  <section *ngIf="user" class="p-6 bg-white rounded shadow">
+    <div class="flex items-start gap-4">
+      <img [src]="user.avatar_url" class="w-20 h-20 rounded" alt="avatar" />
+      <app-repo-card *ngFor="let repo of repos" [repo]="repo"></app-repo-card>
+    </div>
+  </section>
+  <div *ngIf="error" class="mt-4 text-red-500">{{ error }}</div>
+</div>
