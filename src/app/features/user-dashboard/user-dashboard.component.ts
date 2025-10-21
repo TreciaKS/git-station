@@ -1,15 +1,22 @@
-import { Component, effect } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GithubService } from '../../core/github.service';
-import { SearchSignalService } from '../../core/signals/search-signal.service';
 import { GithubUser, GithubRepo } from '../../core/models';
-import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.component'
+import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.component';
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, RepoCardComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NotFoundComponent,
+    LoaderComponent,
+    RepoCardComponent,
+  ],
   templateUrl: './user-dashboard.component.html',
 })
 export class UserDashboardComponent {
@@ -18,24 +25,25 @@ export class UserDashboardComponent {
   repos: GithubRepo[] = [];
   loading = false;
   error = '';
+  emptySearch = false;
+  notFound = false;
 
-  constructor(
-    private gh: GithubService,
-    private searchSignal: SearchSignalService
-  ) {
-    effect(() => {
-      const term = this.searchSignal.searchTerm();
-      const context = this.searchSignal.searchContext();
-      if (context === 'user' && term) {
-        this.username = term;
-        this.loadUser();
-      }
-    });
-  }
+  constructor(private gh: GithubService) {}
 
   loadUser(): void {
     const name = this.username.trim();
-    if (!name) return;
+
+    if (!name) {
+      this.emptySearch = true;
+      this.user = null;
+      this.repos = [];
+      this.notFound = false;
+      this.error = '';
+      return;
+    }
+
+    this.emptySearch = false;
+    this.notFound = false;
     this.loading = true;
     this.error = '';
     this.user = null;
@@ -55,9 +63,13 @@ export class UserDashboardComponent {
           },
         });
       },
-      error: () => {
-        this.error = 'User not found or rate-limited';
+      error: (err) => {
         this.loading = false;
+        if (err.status === 404) {
+          this.notFound = true;
+        } else {
+          this.error = 'Unexpected error. Please try again later.';
+        }
       },
     });
   }
