@@ -23,5 +23,12 @@ export const routes: Routes = [
         (m) => m.ReadmeGeneratorComponent
       ),
   },
+  {
+    path: 'repos',
+    loadComponent: () =>
+      import('./features/repo-explorer/repo-explorer.component').then(
+        (m) => m.RepoExplorerComponent
+      ),
+  },
   { path: '**', redirectTo: 'dashboard' },
 ];

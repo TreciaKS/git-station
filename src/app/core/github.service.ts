@@ -40,4 +40,8 @@ export class GithubService {
     if (language) q += ` language:${language}`;
     return this.searchIssues(q, per_page).pipe(map((res) => res.items));
   }
+
+  searchRepos(params: HttpParams) {
+    return this.http.get(`${this.api}/search/repositories`, { params });
+  }
 }
