@@ -7,6 +7,12 @@ import {
   withEventReplay,
 } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
+import { provideLottieOptions } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function playerFactory() {
+  return player;
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,5 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
     provideHttpClient(),
+    provideLottieOptions({ player: playerFactory }),
   ],
 };
