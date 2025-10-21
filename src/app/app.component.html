@@ -1,50 +1,30 @@
 <div class="flex min-h-screen bg-gray-50">
-  <!-- Sidebar -->
-  <aside class="hidden bg-white border-r w-72 md:block">
+  <aside *ngIf="showSidebar" class="hidden bg-white border-r w-72 md:block">
     <div class="p-6 border-b">
-      <h1 class="text-2xl font-semibold">{{ appName }}</h1>
+      <h1 class="text-2xl font-semibold text-gray-800">GitStation</h1>
       <p class="mt-1 text-sm text-gray-500">Angular 19 + Tailwind</p>
     </div>
 
     <nav class="p-4 space-y-1">
-      <a
-        routerLink="/dashboard"
-        routerLinkActive="bg-gray-100 font-medium"
-        class="block px-4 py-3 transition rounded hover:bg-gray-100"
-        >Dashboard</a
-      >
-      <a
-        routerLink="/starter-finder"
-        routerLinkActive="bg-gray-100 font-medium"
-        class="block px-4 py-3 transition rounded hover:bg-gray-100"
-        >Starter Finder</a
-      >
-      <a
-        routerLink="/readme"
-        routerLinkActive="bg-gray-100 font-medium"
-        class="block px-4 py-3 transition rounded hover:bg-gray-100"
-        >README Generator</a
-      >
+      <a routerLink="/" routerLinkActive="bg-gray-100 font-medium"
+         [routerLinkActiveOptions]="{ exact: true }"
+         class="block px-4 py-3 transition rounded hover:bg-gray-100">
+        Home
+      </a>
+      <a routerLink="/dashboard" routerLinkActive="bg-gray-100 font-medium"
+         class="block px-4 py-3 transition rounded hover:bg-gray-100">
+        Dashboard
+      </a>
+      <a routerLink="/starter-finder" routerLinkActive="bg-gray-100 font-medium"
+         class="block px-4 py-3 transition rounded hover:bg-gray-100">
+        Starter Finder
+      </a>
+      <a routerLink="/readme" routerLinkActive="bg-gray-100 font-medium"
+         class="block px-4 py-3 transition rounded hover:bg-gray-100">
+        README Generator
+      </a>
     </nav>
   </aside>
-
-  <!-- Mobile topbar -->
-  <header class="w-full p-4 bg-white border-b md:hidden">
-    <div class="flex items-center justify-between">
-      <h2 class="text-lg font-semibold">{{ appName }}</h2>
-      <div class="space-x-2 text-sm">
-        <a routerLink="/dashboard">Dashboard</a>
-        <a routerLink="/starter-finder" class="ml-2">Starter</a>
-        <a routerLink="/readme" class="ml-2">README</a>
-        <a
-          routerLink="/repos"
-          routerLinkActive="bg-gray-100 font-medium"
-          class="block px-4 py-3 transition rounded hover:bg-gray-100"
-          >Repo Explorer</a
-        >
-      </div>
-    </div>
-  </header>
 
   <main class="flex-1 p-6">
     <router-outlet></router-outlet>

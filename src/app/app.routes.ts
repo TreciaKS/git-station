@@ -1,7 +1,13 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./features/landing/landing.component').then(
+        (m) => m.LandingComponent
+      ),
+  },
   {
     path: 'dashboard',
     loadComponent: () =>
@@ -23,12 +29,5 @@ export const routes: Routes = [
         (m) => m.ReadmeGeneratorComponent
       ),
   },
-  {
-    path: 'repos',
-    loadComponent: () =>
-      import('./features/repo-explorer/repo-explorer.component').then(
-        (m) => m.RepoExplorerComponent
-      ),
-  },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: '' },
 ];
