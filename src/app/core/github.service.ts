@@ -49,12 +49,24 @@ export class GithubService {
     );
   }
 
-  getGoodFirstIssues(
-    language?: string,
-    per_page = 30
-  ): Observable<GithubIssue[]> {
-    let q = 'label:"good first issue" state:open';
-    if (language) q += ` language:${language}`;
-    return this.searchIssues(q, per_page).pipe(map((res) => res.items));
+  getGoodFirstIssues(language?: string, per_page = 30) {
+    let q = 'is:issue label:"good first issue" state:open';
+
+    if (language && language.trim()) {
+      q += ` language:${language.trim()}`;
+    }
+
+    const params = new HttpParams()
+      .set('q', q)
+      .set('sort', 'created')
+      .set('order', 'desc')
+      .set('per_page', per_page);
+
+    return this.http
+      .get<{ items: GithubIssue[] }>(`${this.api}/search/issues`, {
+        headers: this.headers,
+        params,
+      })
+      .pipe(map((res) => res.items));
   }
 }

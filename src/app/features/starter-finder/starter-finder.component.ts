@@ -32,18 +32,22 @@ export class StarterFinderComponent {
     });
   }
 
-  search(): void {
+  search() {
+    const query = this.language.trim() || '';
     this.loading = true;
     this.error = '';
     this.issues = [];
 
-    this.gh.getGoodFirstIssues(this.language.trim()).subscribe({
-      next: (items: GithubIssue[]) => {
+    this.gh.getGoodFirstIssues(query).subscribe({
+      next: (items) => {
         this.issues = items;
         this.loading = false;
       },
-      error: () => {
-        this.error = 'Search failed (rate-limited?)';
+      error: (err) => {
+        this.error =
+          err.status === 422
+            ? 'Invalid search query — try a simpler term (e.g., "javascript").'
+            : 'Search failed (rate-limited or offline)';
         this.loading = false;
       },
     });
