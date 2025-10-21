@@ -1,0 +1,27 @@
+<div
+  class="flex items-center gap-2 px-3 py-2 bg-white border rounded shadow-sm"
+>
+  <input
+    type="text"
+    [(ngModel)]="query"
+    (keyup.enter)="onSearch()"
+    placeholder="Search GitHub users, languages, etc..."
+    class="flex-1 text-sm outline-none"
+  />
+
+  <button
+    (click)="onSearch()"
+    class="bg-blue-600 text-white text-sm px-3 py-1.5 rounded hover:bg-blue-700 transition"
+  >
+    Search
+  </button>
+
+  <button
+    *ngIf="query"
+    (click)="clear()"
+    class="text-gray-400 transition hover:text-gray-600"
+    title="Clear"
+  >
+    ✕
+  </button>
+</div>

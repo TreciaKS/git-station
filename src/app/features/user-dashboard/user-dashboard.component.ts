@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GithubService } from '../../core/github.service';
+import { SearchSignalService } from '../../core/signals/search-signal.service';
 import { GithubUser, GithubRepo } from '../../core/models';
-import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.component'
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, RepoCardComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './user-dashboard.component.html',
 })
 export class UserDashboardComponent {
@@ -18,7 +18,19 @@ export class UserDashboardComponent {
   loading = false;
   error = '';
 
-  constructor(private gh: GithubService) {}
+  constructor(
+    private gh: GithubService,
+    private searchSignal: SearchSignalService
+  ) {
+    // React to global search updates
+    effect(() => {
+      const query = this.searchSignal.searchTerm();
+      if (query && query !== this.username) {
+        this.username = query;
+        this.loadUser();
+      }
+    });
+  }
 
   loadUser(): void {
     const name = this.username.trim();
