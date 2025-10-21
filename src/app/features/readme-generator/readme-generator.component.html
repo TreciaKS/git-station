@@ -1,48 +1,53 @@
 <div class="max-w-4xl mx-auto">
-  <h2 class="text-xl font-semibold mb-3">README Generator</h2>
+  <h2 class="mb-3 text-xl font-semibold">README Generator</h2>
 
-  <form (ngSubmit)="generate()" class="space-y-4 bg-white p-6 rounded shadow">
+  <form (ngSubmit)="generate()" class="p-6 space-y-4 bg-white rounded shadow">
     <div>
       <label class="block text-sm text-gray-600">Project Name</label>
       <input
         [(ngModel)]="data.name"
         name="name"
-        class="w-full border rounded px-3 py-2"
+        class="w-full px-3 py-2 border rounded"
       />
     </div>
 
     <div>
-      <label class="block text-sm text-gray-600">Short Description</label>
+      <label class="block text-sm text-gray-600"> Short Description</label>
       <textarea
         [(ngModel)]="data.description"
         name="description"
-        class="w-full border rounded px-3 py-2"
+        class="w-full px-3 py-2 border rounded"
+        rows="6"
+        cols="30"
       ></textarea>
     </div>
 
-    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm text-gray-600"> Features </label>
+        <textarea
+          [(ngModel)]="data.features"
+          name="features"
+          class="w-full px-3 py-2 border rounded no-resize"
+          placeholder="A favourites section..."
+          rows="6"
+          cols="30"
+        ></textarea>
+      </div>
+
       <div>
         <label class="block text-sm text-gray-600">Install</label>
-        <input
+        <textarea
           [(ngModel)]="data.install"
           name="install"
-          class="w-full border rounded px-3 py-2"
-          placeholder="npm i ..."
-        />
+          class="w-full px-3 py-2 border rounded no-resize"
+          placeholder="Packages installed or dependencies"
+          rows="6"
+          cols="30"
+        ></textarea>
       </div>
-      <div>
-        <label class="block text-sm text-gray-600">Usage</label>
-        <input
-          [(ngModel)]="data.usage"
-          name="usage"
-          class="w-full border rounded px-3 py-2"
-          placeholder="npm start"
-        />
-      </div>
-    </div>
 
     <div class="flex gap-2">
-      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">
+      <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded">
         Generate
       </button>
       <button
@@ -53,12 +58,18 @@
         Copy
       </button>
     </div>
+    <span
+      *ngIf="copyMessage"
+      class="ml-2 text-sm text-green-600 transition-opacity duration-300"
+    >
+      {{ copyMessage }}
+    </span>
   </form>
 
   <div class="mt-6">
     <h3 class="font-medium">Preview</h3>
     <pre
-      class="mt-2 bg-slate-900 text-white p-4 rounded overflow-auto"
+      class="p-4 mt-2 overflow-auto text-white rounded bg-slate-900"
       style="white-space: pre-wrap"
       >{{ markdown }}</pre
     >
