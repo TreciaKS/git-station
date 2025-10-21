@@ -1,0 +1,25 @@
+<div class="p-4 transition bg-white border rounded hover:shadow-sm">
+  <div class="flex justify-between">
+    <div>
+      <a
+        [href]="issue.html_url"
+        target="_blank"
+        class="font-medium text-blue-700 hover:underline"
+      >
+        {{ issue.title }}
+      </a>
+      <div class="mt-1 text-sm text-gray-500">
+        Repo: {{ issue.repository_url.split("/").slice(-2).join("/") }}
+      </div>
+    </div>
+    <span class="text-xs text-gray-500 uppercase">{{ issue.state }}</span>
+  </div>
+
+  <p class="mt-2 text-sm text-gray-700">
+    {{ truncateText(issue.body!, 180) }}
+  </p>
+
+  <div class="mt-3 text-xs text-gray-500">
+    Opened by {{ issue.user.login }} · {{ formatDate(issue.created_at) }}
+  </div>
+</div>

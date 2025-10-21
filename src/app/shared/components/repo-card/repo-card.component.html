@@ -1,0 +1,23 @@
+<div class="p-4 transition border rounded hover:bg-gray-50">
+  <div class="flex items-center justify-between">
+    <div>
+      <a
+        [href]="repo.html_url"
+        target="_blank"
+        class="font-medium text-blue-700 hover:underline"
+      >
+        {{ repo.name }}
+      </a>
+      <p class="mt-1 text-sm text-gray-600">
+        {{ repo.description || "No description" }}
+      </p>
+    </div>
+    <span class="text-xs text-gray-500">{{ repo.language }}</span>
+  </div>
+
+  <div class="flex justify-between mt-3 text-xs text-gray-400">
+    <span>⭐ {{ repo.stargazers_count }}</span>
+    <span>🍴 {{ repo.forks_count }}</span>
+    <span>Updated: {{ formatDate(repo.updated_at) }}</span>
+  </div>
+</div>
