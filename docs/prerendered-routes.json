@@ -1,0 +1,8 @@
+{
+  "routes": {
+    "/git-station": {},
+    "/git-station/dashboard": {},
+    "/git-station/readme": {},
+    "/git-station/starter-finder": {}
+  }
+}

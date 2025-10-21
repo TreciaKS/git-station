@@ -1,0 +1,18 @@
+import './polyfills.server.mjs';
+import{a as b,b as x,c as S,d as E,e as v,f as T,g as G}from"./chunk-O5KGQ2W7.mjs";import{$a as w,Ca as c,Ga as f,Nb as _,Oa as y,Pb as C,Ra as t,Sa as n,Ua as g,Va as h,_a as i,ab as M,cb as s,db as m,eb as p,ua as o}from"./chunk-WDAKKWTX.mjs";import"./chunk-S6KH3LOX.mjs";function W(l,u){if(l&1&&(t(0,"span",15),i(1),n()),l&2){let r=h();o(),M(" ",r.copyMessage," ")}}var R=class l{data={name:"",description:"",install:"",features:""};markdown="";copyMessage="";generate(){this.markdown=`# ${this.data.name||"Project Title"}
+
+    ${this.data.description||"Short description."}
+
+    ## Features
+    \`\`\`The following features are found in # ${this.data.name||"the project:"}
+    ${this.data.features||"Can login without auth?"}
+    \`\`\`
+
+    ## Installations
+    \`\`\`bash
+    ${this.data.install||"Packages installed or dependencies"}
+    \`\`\`
+
+    ## License
+    MIT
+    `}copy(){navigator.clipboard.writeText(this.markdown).then(()=>{this.copyMessage="\u2705 Copied to clipboard!",setTimeout(()=>this.copyMessage="",2e3)}).catch(()=>{this.copyMessage="\u274C Failed to copy",setTimeout(()=>this.copyMessage="",2e3)})}static \u0275fac=function(r){return new(r||l)};static \u0275cmp=c({type:l,selectors:[["app-readme-generator"]],decls:31,vars:6,consts:[[1,"max-w-4xl","mx-auto"],[1,"mb-3","text-xl","font-semibold"],[1,"p-6","space-y-4","bg-white","rounded","shadow",3,"ngSubmit"],[1,"block","text-sm","text-gray-600"],["name","name",1,"w-full","px-3","py-2","border","rounded",3,"ngModelChange","ngModel"],["name","description","rows","6","cols","30",1,"w-full","px-3","py-2","border","rounded",3,"ngModelChange","ngModel"],["name","features","placeholder","A favourites section...","rows","6","cols","30",1,"w-full","px-3","py-2","border","rounded","no-resize",3,"ngModelChange","ngModel"],["name","install","placeholder","Packages installed or dependencies","rows","6","cols","30",1,"w-full","px-3","py-2","border","rounded","no-resize",3,"ngModelChange","ngModel"],[1,"flex","gap-2"],["type","submit",1,"px-4","py-2","text-white","bg-blue-600","rounded"],["type","button",1,"px-4","py-2","bg-gray-200","rounded",3,"click"],["class","ml-2 text-sm text-green-600 transition-opacity duration-300",4,"ngIf"],[1,"mt-6"],[1,"font-medium"],[1,"p-4","mt-2","overflow-auto","text-white","rounded","bg-slate-900",2,"white-space","pre-wrap"],[1,"ml-2","text-sm","text-green-600","transition-opacity","duration-300"]],template:function(r,e){r&1&&(t(0,"div",0)(1,"h2",1),i(2,"README Generator"),n(),t(3,"form",2),g("ngSubmit",function(){return e.generate()}),t(4,"div")(5,"label",3),i(6,"Project Name"),n(),t(7,"input",4),p("ngModelChange",function(a){return m(e.data.name,a)||(e.data.name=a),a}),n()(),t(8,"div")(9,"label",3),i(10," Short Description"),n(),t(11,"textarea",5),p("ngModelChange",function(a){return m(e.data.description,a)||(e.data.description=a),a}),n()(),t(12,"div")(13,"label",3),i(14," Features "),n(),t(15,"textarea",6),p("ngModelChange",function(a){return m(e.data.features,a)||(e.data.features=a),a}),n()(),t(16,"div")(17,"label",3),i(18,"Install"),n(),t(19,"textarea",7),p("ngModelChange",function(a){return m(e.data.install,a)||(e.data.install=a),a}),n()(),t(20,"div",8)(21,"button",9),i(22," Generate "),n(),t(23,"button",10),g("click",function(){return e.copy()}),i(24," Copy "),n()(),f(25,W,2,1,"span",11),n(),t(26,"div",12)(27,"h3",13),i(28,"Preview"),n(),t(29,"pre",14),i(30),n()()()),r&2&&(o(7),s("ngModel",e.data.name),o(4),s("ngModel",e.data.description),o(4),s("ngModel",e.data.features),o(4),s("ngModel",e.data.install),o(6),y("ngIf",e.copyMessage),o(5),w(e.markdown))},dependencies:[C,_,G,T,b,x,S,v,E],encapsulation:2})};export{R as ReadmeGeneratorComponent};
