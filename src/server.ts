@@ -17,9 +17,11 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+
 app.get('/api/github/user/:username', async (req, res) => {
   const token = process.env['GITHUB_TOKEN'];
   const username = req.params.username;
+  console.log('Proxying GitHub user request for:', req.params.username);
 
   try {
     const response = await fetch(`https://api.github.com/users/${username}`, {
