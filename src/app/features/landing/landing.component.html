@@ -1,16 +1,17 @@
-<div class="flex flex-col items-center justify-center px-6 py-16 text-center">
-  <ng-lottie [options]="options" class="mx-auto w-72 h-72"></ng-lottie>
+<div class="flex items-center justify-center px-6 py-16 text-center">
+  <div class="">
+    <h1 class="mb-4 text-5xl font-bold text-gray-800">
+      Welcome to <span class="text-blue-600">GitStation</span>
+    </h1>
 
-  <h1 class="mb-4 text-5xl font-bold text-gray-800">
-    Welcome to <span class="text-blue-600">GitStation</span>
-  </h1>
-
-  <p class="max-w-xl mb-8 text-gray-600">
-    Explore GitHub users, repositories, and open-source issues — all in one
-    elegant interface.
-  </p>
+    <p class="max-w-xl mb-8 text-gray-600">
+      Explore GitHub users, repositories, and open-source issues — all in one
+      elegant interface.
+    </p>
+  </div>
 
   <div class="space-x-4">
+    <ng-lottie [options]="options" class="mx-auto w-72 h-72"></ng-lottie>
     <a
       routerLink="/dashboard"
       class="px-6 py-2 font-medium text-white transition bg-blue-600 rounded-lg hover:bg-blue-700"
