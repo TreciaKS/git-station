@@ -17,7 +17,6 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-
 app.get('/ssr/github/user/:username', async (req, res) => {
   const token = process.env['GITHUB_TOKEN'];
   const username = req.params.username;
@@ -28,10 +27,12 @@ app.get('/ssr/github/user/:username', async (req, res) => {
       headers: {
         Authorization: `Bearer ${token}`,
         'User-Agent': 'Angular-SSR-App',
+        Accept: 'application/vnd.github+json',
       },
     });
 
     const data = await response.json();
+    res.setHeader('Content-Type', 'application/json');
     res.status(response.status).json(data);
   } catch (err) {
     console.error('GitHub proxy error:', err);
