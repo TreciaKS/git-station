@@ -1,12 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/api/github/:path*",
-      "destination": "/api/github/:path*"
+      "source": "/ssr/github/:path*",
+      "destination": "/"
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }

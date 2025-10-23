@@ -18,7 +18,7 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 
-app.get('/api/github/user/:username', async (req, res) => {
+app.get('/ssr/github/user/:username', async (req, res) => {
   const token = process.env['GITHUB_TOKEN'];
   const username = req.params.username;
   console.log('Proxying GitHub user request for:', req.params.username);

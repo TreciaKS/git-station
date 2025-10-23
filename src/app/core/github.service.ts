@@ -8,7 +8,7 @@ export class GithubService {
   constructor(private http: HttpClient) {}
 
   getUser(username: string): Observable<GithubUser> {
-    return this.http.get<GithubUser>(`/api/github/user/${username}`);
+    return this.http.get<GithubUser>(`/ssr/github/user/${username}`);
   }
 
   getRepos(username: string, per_page = 50): Observable<GithubRepo[]> {
