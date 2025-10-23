@@ -1,3 +1,4 @@
+// server.ts
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
@@ -20,7 +21,7 @@ const angularApp = new AngularNodeAppEngine();
 app.get('/ssr/github/user/:username', async (req, res) => {
   const token = process.env['GITHUB_TOKEN'];
   const username = req.params.username;
-  console.log('Proxying GitHub user request for:', req.params.username);
+  console.log('Proxying GitHub user request for:', username);
 
   try {
     const response = await fetch(`https://api.github.com/users/${username}`, {
@@ -31,12 +32,19 @@ app.get('/ssr/github/user/:username', async (req, res) => {
       },
     });
 
+    if (!response.ok) {
+      res.setHeader('Content-Type', 'application/json');
+      return res
+        .status(response.status)
+        .json({ error: 'GitHub user not found' });
+    }
+
     const data = await response.json();
     res.setHeader('Content-Type', 'application/json');
-    res.status(response.status).json(data);
+    return res.status(response.status).json(data); // ✅ added return
   } catch (err) {
     console.error('GitHub proxy error:', err);
-    res.status(500).json({ error: 'GitHub proxy failed' });
+    return res.status(500).json({ error: 'GitHub proxy failed' }); // ✅ added return
   }
 });
 
@@ -55,6 +63,10 @@ app.use('/**', (req, res, next) => {
       response ? writeResponseToNodeResponse(response, res) : next()
     )
     .catch(next);
+});
+
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' });
 });
 
 if (isMainModule(import.meta.url)) {
