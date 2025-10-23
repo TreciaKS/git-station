@@ -8,11 +8,12 @@ import {
   RouterLinkActive,
 } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { FooterComponent } from './shared/components/footer/footer.component'
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, FooterComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {
