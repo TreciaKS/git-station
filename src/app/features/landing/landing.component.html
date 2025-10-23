@@ -1,28 +1,33 @@
-<div class="flex items-center justify-center px-6 py-16 text-center">
-  <div class="">
-    <h1 class="mb-4 text-5xl font-bold text-gray-800">
-      Welcome to <span class="text-blue-600">GitStation</span>
-    </h1>
-
-    <p class="max-w-xl mb-8 text-gray-600">
-      Explore GitHub users, repositories, and open-source issues — all in one
-      elegant interface.
-    </p>
-  </div>
-
-  <div class="space-x-4">
-    <ng-lottie [options]="options" class="mx-auto w-72 h-72"></ng-lottie>
-    <a
-      routerLink="/dashboard"
-      class="px-6 py-2 font-medium text-white transition bg-blue-600 rounded-lg hover:bg-blue-700"
+<section class="relative flex items-center h-screen px-16 overflow-hidden transition-all border border-green-700 max-md:px-2">
+  <div class="relative w-full space-y-4">
+    <h1 class="text-9xl max-lg:text-7xl max-md:text-5xl">Git Station</h1>
+    <h4
+      class="tracking-wide px-2.5 text-xl w-2xl font-normal text-(--color-azure-400) max-lg:text-lg max-md:text-base max-md:px-0 break-after-all max-md:w-full"
     >
-      Get Started
-    </a>
-    <a
-      routerLink="/dashboard"
-      class="px-6 py-2 font-medium text-gray-700 transition border border-gray-400 rounded-lg hover:border-blue-500 hover:text-blue-500"
-    >
-      Explore Repos
-    </a>
+      Your all-in-one open source workspace — built for developers who live on
+      GitHub. Track repositories, discover beginner-friendly issues, and craft
+      professional READMEs, all from one intuitive dashboard.
+    </h4>
+    <div class="relative py-10 px-2.5 space-x-4 max-md:px-0 max-md:space-x-2 max-md:py-4">
+      <button
+        routerLink="/dashboard"
+        class="px-8 py-3 font-semibold text-(--color-azure-100) transition-all duration-300 bg-(--color-azure-500) rounded-full hover:-translate-y-1 hover:shadow-(--color-azure-500)/30 cursor-pointer max-md:px-4"
+      >
+        Get Started
+      </button>
+      <a
+        href="https://github.com/TreciaKS/git-station"
+        target="_blank"
+        class="px-8 py-3 text-(--color-azure-500) transition-all duration-300 border rounded-full border-(--color-azure-500)/40 hover:bg-(--color-azure-500)/10 max-md:px-4"
+      >
+        View on GitHub
+      </a>
+    </div>
   </div>
-</div>
+  <div class="w-2/4 mx-auto filter drop-shadow-[0_20px_30px_#00020260] absolute right-0  max-lg:-z-10 max-lg:opacity-10 max-md:left-0">
+    <iframe
+      src="https://lottie.host/embed/340836d8-9664-47f7-a352-344bc46fe2ed/maFdlp5TR7.lottie"
+      class="w-[700px] h-[700px] border-none"
+    ></iframe>
+  </div>
+</section>

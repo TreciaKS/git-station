@@ -1,7 +1,7 @@
-<div class="flex min-h-screen bg-gray-50">
+<div class="overflow-hidden">
   <aside *ngIf="showSidebar" class="hidden bg-white border-r w-72 md:block">
     <div class="p-6 border-b">
-      <h1 class="text-2xl font-semibold text-gray-800">GitStation</h1>
+      <h1 class="text-2xl font-semibold text-gray-800 ">GitStation</h1>
       <p class="mt-1 text-sm text-gray-500">Angular 19 + Tailwind</p>
     </div>
 
@@ -26,7 +26,7 @@
     </nav>
   </aside>
 
-  <main class="flex-1 p-6">
+  <main class="">
     <router-outlet></router-outlet>
   </main>
 </div>
