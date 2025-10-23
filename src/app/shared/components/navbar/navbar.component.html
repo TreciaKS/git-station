@@ -1,4 +1,4 @@
-<nav class="px-16 py-4 max-md:px-2">
+<nav class="relative px-16 py-4 max-md:px-2">
   <div class="relative flex items-center justify-between">
     <a
       href="https://treciaks-dev.vercel.app"
@@ -13,7 +13,7 @@
       />
     </a>
 
-    <button (click)="toggleMenu()" class="absolute right-0 text-2xl md:hidden">
+    <button (click)="toggleMenu()" class="absolute text-2xl right-4 md:hidden">
       ☰
     </button>
 
@@ -52,7 +52,7 @@
   <!-- Mobile dropdown -->
   <ul
     *ngIf="menuOpen"
-    class="p-3 mt-3 space-y-2 border border-gray-800 rounded-lg md:hidden bg-black/80"
+    class="absolute p-3 mt-3 space-y-2 border border-(--color-azure-200) rounded-lg md:hidden bg-(--color-azure-400)/80 w-[95%] mx-auto text-(--color-azure-100)"
   >
     <li><a routerLink="/" (click)="closeMenu()">Home</a></li>
     <li><a routerLink="/dashboard" (click)="closeMenu()">User Search</a></li>
