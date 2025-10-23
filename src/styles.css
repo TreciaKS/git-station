@@ -1,6 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import "tailwindcss";
+
+:root {
+  --font-display: "Lato", "sans-serif";
+  --color-azure-100: #d9eaf6;
+  --color-azure-200: #79b6dd;
+  --color-azure-300: #2593c9;
+  --color-azure-400: #026d9d;
+  --color-azure-500: #0a4160;
+}
+@layer theme {
+  /* will keep empty for */
+}
 
 .no-resize {
   resize: none;
+}
+
+html {
+  background-color: var(--color-azure-100);
+  color: var(--color-azure-500);
 }

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { LottieComponent, AnimationOptions } from 'ngx-lottie';
+import { AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule, RouterLink, LottieComponent],
+  imports: [CommonModule, RouterLink],
   templateUrl: './landing.component.html',
 })
 export class LandingComponent {

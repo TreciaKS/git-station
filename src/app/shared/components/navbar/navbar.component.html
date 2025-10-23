@@ -1,0 +1,64 @@
+<nav class="relative px-16 py-4 max-md:px-2">
+  <div class="relative flex items-center justify-between">
+    <a
+      href="https://treciaks-dev.vercel.app"
+      class="logo"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img
+        src="/logo.png"
+        alt="TreciaKS Logo"
+        class="w-10 h-10 rounded-full shadow"
+      />
+    </a>
+
+    <button (click)="toggleMenu()" class="absolute text-2xl right-4 md:hidden">
+      ☰
+    </button>
+
+    <ul class="flex items-center space-x-5 tracking-wide max-md:hidden">
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="text-(--color-azure-300) font-medium"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="text-(--color-azure-300) font-medium"
+          >User Search</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/starter-finder"
+          routerLinkActive="text-(--color-azure-300) font-medium"
+          >Starter Finder</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/readme"
+          routerLinkActive="text-(--color-azure-300) font-medium"
+          >Generate ReadMe</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <ul
+    *ngIf="menuOpen"
+    class="absolute p-3 mt-3 space-y-2 border border-(--color-azure-200) rounded-lg md:hidden bg-(--color-azure-400)/80 w-[95%] mx-auto text-(--color-azure-100)"
+  >
+    <li><a routerLink="/" (click)="closeMenu()">Home</a></li>
+    <li><a routerLink="/dashboard" (click)="closeMenu()">User Search</a></li>
+    <li>
+      <a routerLink="/starter-finder" (click)="closeMenu()">Starter Finder</a>
+    </li>
+    <li><a routerLink="/readme" (click)="closeMenu()">Generate ReadMe</a></li>
+  </ul>
+</nav>
