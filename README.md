@@ -1,9 +1,7 @@
+<h1 align="center">☕ GitStation ✨</h1>
 <p align="center">
-  <img src="docs/logo.png" alt="GitStation Logo" width="150" />
+  <img width="1650" height="934" alt="Screenshot 2025-10-24 at 05 28 48" src="https://github.com/user-attachments/assets/a76edeac-7e40-48c6-82bf-adb4d57b8667" />
 </p>
-
-<h1 align="center">☕ GitStation</h1>
-
 <p align="center">
   <strong>An Angular 19 + Tailwind CSS GitHub Dashboard</strong><br>
   Explore users, repos, open-source issues, and generate README templates — all in one sleek UI.
