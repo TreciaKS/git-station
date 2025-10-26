@@ -1,13 +1,15 @@
 <section class="relative overflow-hidden">
   <app-astro-side></app-astro-side>
-  <div class="w-3/4 absolute top-0 bg-(--color-azure-100) h-full px-20 max-md:px-6 max-lg:pb-20 max-lg:relative max-lg:w-full">
+  <div
+    class="w-3/4 absolute top-0 bg-(--color-azure-100) h-full px-20 max-md:px-6 max-lg:pb-20 max-lg:relative max-lg:w-full"
+  >
     <div class="mb-4">
       <div class="py-5">
         <h1 class="font-bold text-2xl text-(--color-azure-500)">
           GitHub username
         </h1>
         <p class="text-(--color-azure-400) pt-2">
-          Search the desired GitHub user to see their repos, follower and other
+          Search the desired GitHub user to see their repos, contributions, follower and other
           cool information.
         </p>
       </div>
@@ -29,28 +31,44 @@
 
     <app-loader *ngIf="loading"></app-loader>
 
-    <section *ngIf="user && !loading" class="p-6 bg-white rounded shadow">
-      <div class="flex items-start gap-4">
-        <img [src]="user.avatar_url" class="w-20 h-20 rounded" alt="avatar" />
-        <div>
-          <h2 class="text-xl font-semibold">{{ user.name || user.login }}</h2>
-          <p class="text-sm text-gray-600">{{ user.bio }}</p>
-          <div class="mt-2 text-sm text-gray-500">
-            <span class="mr-4">Repos: {{ user.public_repos }}</span>
-            <span class="mr-4">Followers: {{ user.followers }}</span>
-            <span>Following: {{ user.following }}</span>
-          </div>
-          <a
-            [href]="user.html_url"
-            target="_blank"
-            class="inline-block mt-2 text-sm text-blue-600"
-            >View on GitHub</a
-          >
+    <div
+      *ngIf="repos.length && !loading"
+      class="grid grid-cols-3 gap-4 mt-6 space-y-2 overflow-x-hidden overflow-y-scroll h-145 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-2"
+    >
+      <section
+        *ngIf="user && !loading"
+        class="flex bg-white rounded shadow-lg lg:col-span-2 justify-between px-2 h-40 items-center gap-x-2.5"
+      >
+        <div class="mx-auto">
+          <img
+            [src]="user.avatar_url"
+            class="object-contain w-24 h-24 mx-auto rounded-full"
+            alt="user avatar"
+          />
+          <h2 class="text-lg font-semibold text-center text-(--color-azure-500)">
+            {{ user.name || user.login }}
+          </h2>
         </div>
-      </div>
-    </section>
 
-    <div *ngIf="repos.length && !loading" class="mt-6 space-y-2 overflow-y-scroll h-145">
+        <div class="p-2 lg:w-3/4">
+          <p class="text-sm">{{ user.bio || "No bio" }}</p>
+          <div class="flex items-center justify-between pt-5 text-sm">
+            <p class="">Repos: {{ user.public_repos }}</p>
+            <a
+              [href]="user.html_url"
+              target="_blank"
+              class="my-2 block text-(--color-azure-300)"
+              >GitHub <span class="text-xs">&nearr;</span></a
+            >
+          </div>
+          <div
+            class="flex items-center justify-between pt-0 text-sm"
+          >
+            <p class="mr-4">Followers: {{ user.followers }}</p>
+            <p>Following: {{ user.following }}</p>
+          </div>
+        </div>
+      </section>
       <app-repo-card *ngFor="let repo of repos" [repo]="repo"></app-repo-card>
     </div>
 

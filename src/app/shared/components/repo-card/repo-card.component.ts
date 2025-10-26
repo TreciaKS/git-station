@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GithubRepo } from '../../../core/models';
-import { formatDate } from '../../../core/utils';
+import { formatDate, truncateText } from '../../../core/utils';
 
 @Component({
   selector: 'app-repo-card',
@@ -12,5 +12,6 @@ import { formatDate } from '../../../core/utils';
 export class RepoCardComponent {
   @Input() repo!: GithubRepo;
 
+  truncateText = truncateText;
   formatDate = formatDate;
 }
