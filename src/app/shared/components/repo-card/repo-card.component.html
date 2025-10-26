@@ -1,23 +1,23 @@
-<div class="p-4 transition border rounded hover:bg-gray-50">
-  <div class="flex items-center justify-between">
-    <div>
-      <a
-        [href]="repo.html_url"
-        target="_blank"
-        class="font-medium text-blue-700 hover:underline"
-      >
-        {{ repo.name }}
-      </a>
-      <p class="mt-1 text-sm text-gray-600">
-        {{ repo.description || "No description" }}
-      </p>
+<a [href]="repo.html_url" target="_blank" rel="noopener noreferrer">
+  <div
+    class="p-4 transition rounded-lg hover: shadow-md relative text-(--color-azure-500) bg-white h-40"
+  >
+    <div class="flex">
+      <div class="w-full overflow-hidden h-25">
+        <div class="flex items-center justify-between">
+          <h1 class="text-lg font-semibold capitalize">{{ repo.name }}</h1>
+          <p>⑂ {{ repo.forks_count }}</p>
+        </div>
+        <p class="mt-1 text-sm text-gray-600">
+          {{ truncateText(repo.description!, 150) || "No description" }}
+        </p>
+      </div>
     </div>
-    <span class="text-xs text-gray-500">{{ repo.language }}</span>
-  </div>
 
-  <div class="flex justify-between mt-3 text-xs text-gray-400">
-    <span>⭐ {{ repo.stargazers_count }}</span>
-    <span>🍴 {{ repo.forks_count }}</span>
-    <span>Updated: {{ formatDate(repo.updated_at) }}</span>
+    <div class="flex justify-between mt-3 text-xs">
+      <p class="text-xs">{{ repo.language || "N/A" }}</p>
+      <p>Updated: {{ formatDate(repo.updated_at) }}</p>
+      <p>⭐ {{ repo.stargazers_count }}</p>
+    </div>
   </div>
-</div>
+</a>
