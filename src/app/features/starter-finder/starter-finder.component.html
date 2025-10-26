@@ -1,20 +1,24 @@
 <section class="relative overflow-hidden">
   <app-astro-side></app-astro-side>
-  <div class="w-3/4 absolute top-0 bg-(--color-azure-100) h-full px-20 max-md:px-6 max-lg:pb-20 max-lg:relative max-lg:w-full">
+  <div
+    class="w-3/4 absolute top-0 bg-(--color-azure-100) h-full px-20 max-md:px-6 max-lg:pb-20 max-lg:relative max-lg:w-full"
+  >
     <div class="mb-4">
       <div class="py-5">
         <h1 class="font-bold text-2xl text-(--color-azure-500)">
           Filter by language
         </h1>
         <p class="text-(--color-azure-400) pt-2">
-          If you are looking to get started and contribute to an open source project, you can find thirty &quot;good first issues&quot; to start with.
+          If you are looking to get started and contribute to an open source
+          project, you can find thirty &quot;good first issues&quot; to start
+          with.
         </p>
       </div>
       <div class="flex gap-2 mt-2">
         <input
           [(ngModel)]="language"
           (keyup.enter)="search()"
-          placeholder="Search language: javascript"
+          placeholder="Search by language: JavaScript"
           class="flex-1 px-3 py-2 border border-(--color-azure-300) rounded focus:outline-none focus:ring-2 focus:ring-(--color-azure-200)"
         />
         <button
@@ -28,14 +32,18 @@
 
     <app-loader *ngIf="loading"></app-loader>
 
-    <div class="overflow-y-scroll h-180">
+    <div class="overflow-y-scroll h-180 grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 max-md:gap-2 overflow-x-hidden">
       <app-issue-card
-      *ngFor="let issue of issues"
-      [issue]="issue"
-    ></app-issue-card>
+        *ngFor="let issue of issues"
+        [issue]="issue"
+      ></app-issue-card>
     </div>
 
-
-    <div *ngIf="error" class="mt-4 text-red-500">{{ error }}</div>
+    <app-not-found
+      *ngIf="error"
+      [message]="error"
+      suggestion="Type a name to explore their profile and repos."
+    >
+    </app-not-found>
   </div>
 </section>
