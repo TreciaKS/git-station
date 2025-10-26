@@ -9,7 +9,7 @@
       <img
         src="/logo.png"
         alt="TreciaKS Logo"
-        class="w-15 h-15 rounded-full shadow-md max-md:w-12 max-md:h-12"
+        class="rounded-full shadow-md w-15 h-15 max-md:w-12 max-md:h-12"
       />
     </a>
 
@@ -17,7 +17,7 @@
       ☰
     </button>
 
-    <ul class="flex items-center space-x-8 tracking-wide max-md:hidden text-lg">
+    <ul class="flex items-center space-x-8 text-lg tracking-wide max-md:hidden">
       <li>
         <a
           routerLink="/"
@@ -52,7 +52,7 @@
   <!-- Mobile dropdown -->
   <ul
     *ngIf="menuOpen"
-    class="absolute p-3 mt-3 space-y-2 border border-(--color-azure-200) rounded-lg md:hidden bg-(--color-azure-400)/80 w-[95%] mx-auto text-(--color-azure-100)"
+    class="absolute p-4 mt-3 space-y-2 border border-(--color-azure-200) rounded-lg md:hidden bg-(--color-azure-400) w-[88%] mx-auto text-(--color-azure-100) z-50"
   >
     <li><a routerLink="/" (click)="closeMenu()">Home</a></li>
     <li><a routerLink="/dashboard" (click)="closeMenu()">User Search</a></li>

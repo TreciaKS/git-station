@@ -2,9 +2,9 @@
   <div
     class="p-4 transition border-2 rounded-lg hover: shadow-md border-(--color-azure-300) h-70 relative text-(--color-azure-500) bg-white"
   >
-    <div class="flex justify-between relative pb-1 items-center gap-x-2">
+    <div class="relative flex items-center justify-between pb-1 gap-x-2">
       <h1 class="text-lg font-semibold text-(--color-azure-400) capitalize">
-        {{ issue.title }}
+        {{ truncateText(issue.title!, 60) }}
       </h1>
       <p
         class="text-xs uppercase bg-green-500 text-white rounded-lg py-1.5 px-2 h-7 mr-1"
@@ -13,7 +13,7 @@
       </p>
     </div>
 
-    <p class="mt-2 text-sm h-30 bottom-8 capitalize overflow-hidden">
+    <p class="mt-2 overflow-hidden text-sm capitalize h-30 bottom-8">
       {{ truncateText(issue.body!, 180) || 'No description provided.' }}
     </p>
 
