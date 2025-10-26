@@ -16,6 +16,7 @@
       </div>
       <div class="flex gap-2 mt-2">
         <input
+          type="search"
           [(ngModel)]="language"
           (keyup.enter)="search()"
           placeholder="Search by language: JavaScript"
@@ -32,7 +33,9 @@
 
     <app-loader *ngIf="loading"></app-loader>
 
-    <div class="overflow-y-scroll h-180 grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 max-md:gap-2 overflow-x-hidden">
+    <div
+      class="overflow-y-scroll h-180 grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 max-md:gap-2 overflow-x-hidden"
+    >
       <app-issue-card
         *ngFor="let issue of issues"
         [issue]="issue"
