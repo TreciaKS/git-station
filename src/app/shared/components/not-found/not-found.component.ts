@@ -13,6 +13,6 @@ export class NotFoundComponent {
   @Input() suggestion = 'Try refining your search.';
 
   options: AnimationOptions = {
-    path: 'https://assets10.lottiefiles.com/packages/lf20_5ngs2ksb.json',
+    path: 'https://lottie.host/f4bb7f62-c330-4384-a816-69087d248053/1wcVL3hk5Y.json',
   };
 }

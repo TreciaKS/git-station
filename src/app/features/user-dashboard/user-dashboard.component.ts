@@ -6,6 +6,7 @@ import { GithubUser, GithubRepo } from '../../core/models';
 import { NotFoundComponent } from '../../shared/components/not-found/not-found.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.component';
+import { AstroSideComponent } from "../../shared/components/astro-side/astro-side.component";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -16,6 +17,7 @@ import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.c
     NotFoundComponent,
     LoaderComponent,
     RepoCardComponent,
+    AstroSideComponent,
   ],
   templateUrl: './user-dashboard.component.html',
 })

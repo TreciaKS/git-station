@@ -10,6 +10,6 @@ import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 })
 export class LoaderComponent {
   options: AnimationOptions = {
-    path: 'https://assets10.lottiefiles.com/packages/lf20_5ngs2ksb.json',
+    path: 'https://lottie.host/1c9c09d2-3e40-4f69-8e95-84d42382a61a/2zaSj1F63D.json',
   };
 }

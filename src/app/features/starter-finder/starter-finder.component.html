@@ -1,29 +1,41 @@
-<div class="max-w-4xl mx-auto">
-  <div class="mb-4">
-    <label class="block text-sm text-gray-600"
-      >Filter by language (optional)</label
-    >
-    <div class="flex gap-2 mt-2">
-      <input
-        [(ngModel)]="language"
-        placeholder="e.g. javascript"
-        class="flex-1 px-3 py-2 border rounded"
-      />
-      <button
-        (click)="search()"
-        class="px-4 py-2 text-white bg-green-600 rounded"
-      >
-        Search
-      </button>
+<section class="relative overflow-hidden">
+  <app-astro-side></app-astro-side>
+  <div class="w-3/4 absolute top-0 bg-(--color-azure-100) h-full px-20 max-md:px-6 max-lg:pb-20 max-lg:relative max-lg:w-full">
+    <div class="mb-4">
+      <div class="py-5">
+        <h1 class="font-bold text-2xl text-(--color-azure-500)">
+          Filter by language
+        </h1>
+        <p class="text-(--color-azure-400) pt-2">
+          If you are looking to get started and contribute to an open source project, you can find thirty &quot;good first issues&quot; to start with.
+        </p>
+      </div>
+      <div class="flex gap-2 mt-2">
+        <input
+          [(ngModel)]="language"
+          (keyup.enter)="search()"
+          placeholder="Search language: javascript"
+          class="flex-1 px-3 py-2 border border-(--color-azure-300) rounded focus:outline-none focus:ring-2 focus:ring-(--color-azure-200)"
+        />
+        <button
+          (click)="search()"
+          class="px-4 py-2 text-white bg-(--color-azure-300) rounded cursor-pointer"
+        >
+          Search
+        </button>
+      </div>
     </div>
+
+    <app-loader *ngIf="loading"></app-loader>
+
+    <div class="overflow-y-scroll h-180">
+      <app-issue-card
+      *ngFor="let issue of issues"
+      [issue]="issue"
+    ></app-issue-card>
+    </div>
+
+
+    <div *ngIf="error" class="mt-4 text-red-500">{{ error }}</div>
   </div>
-
-  <div *ngIf="loading" class="text-sm text-gray-500">Searching GitHub...</div>
-
-  <app-issue-card *ngFor="let issue of issues" [issue]="issue"></app-issue-card>
-
-  <div *ngIf="!issues?.length && !loading" class="text-sm text-gray-500">
-    No results yet. Try searching.
-  </div>
-  <div *ngIf="error" class="mt-4 text-red-500">{{ error }}</div>
-</div>
+</section>

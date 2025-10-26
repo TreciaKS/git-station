@@ -29,5 +29,12 @@ export const routes: Routes = [
         (m) => m.ReadmeGeneratorComponent
       ),
   },
-  { path: '**', redirectTo: '' },
+  {
+    path: 'error',
+    loadComponent: () =>
+      import('./shared/components/error/error.component').then(
+        (m) => m.ErrorComponent
+      ),
+  },
+  { path: '**', redirectTo: 'error' },
 ];

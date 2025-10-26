@@ -1,4 +1,4 @@
-<section class="px-16 max-md:px-2 transition-all">
+<section class="px-28 max-md:px-2 transition-all relative pb-20">
   <div class="relative flex items-center overflow-hidden min-h-screen max-md:h-[30vh]">
     <div class="relative w-full space-y-4">
       <h1 class="text-9xl max-lg:text-7xl max-md:text-5xl">Git Station</h1>
@@ -30,19 +30,16 @@
       </div>
     </div>
     <div
-      class="w-2/4 mx-auto filter drop-shadow-[0_10px_20px_#0a416080] absolute right-0 max-lg:-z-10 max-lg:opacity-10 max-md:left-0"
+      class="w-2/4 mx-auto absolute right-0 max-lg:-z-10 max-lg:opacity-10 max-md:left-0"
     >
-      <iframe
-        src="https://lottie.host/embed/340836d8-9664-47f7-a352-344bc46fe2ed/maFdlp5TR7.lottie"
-        class="w-[800px] h-[800px] border-none"
-      ></iframe>
+      <ng-lottie [options]="options" class="w-[800px] h-[800px] border-none" width="800px" height="800px"></ng-lottie>
     </div>
   </div>
-  <h1 class="text-5xl max-lg:text-center pr-1">
+  <h1 class="text-5xl max-lg:text-center pr-1 pb-10">
     Features <fa-icon [icon]="'star'"></fa-icon>
   </h1>
   <div
-    class="cursor-pointer flex items-center justify-between py-10 flex-wrap max-lg:justify-center max-lg:space-y-5"
+    class="cursor-pointer flex items-center justify-between flex-wrap max-lg:justify-center max-lg:space-y-5 max-lg:space-x-2"
   >
     <div
       class="rounded-lg space-y-3 border-4 border-(--color-azure-200) px-6 min-h-44 hover:shadow-lg hover:bg-(--color-azure-200)/20 w-md grid place-content-center"
@@ -65,7 +62,7 @@
       </p>
     </div>
     <div
-      class="rounded-lg space-y-3 border-4 border-(--color-azure-200) px-6 min-h-44 hover:shadow-lg hover:bg-(--color-azure-200)/20 w-md grid place-content-center"
+      class="rounded-lg space-y-3 border-4 border-(--color-azure-200) px-6 min-h-44 hover:shadow-lg hover:bg-(--color-azure-200)/20 w-md grid place-content-center max-md:my-5"
       routerLink="/readme"
     >
       <h4 class="text-xl text-medium tracking-wide"><fa-icon [icon]="'pen'"></fa-icon> README Generator</h4>
