@@ -21,23 +21,23 @@ export class ReadmeGeneratorComponent {
   copyMessage = '';
 
   generate(): void {
-    this.markdown = `# ${this.data.name || 'Project Title'}
+    this.markdown = `# ${this.data.name || 'Project Title ✨'}
 
-    ${this.data.description || 'Short description.'}
+    ${this.data.description || 'Short description ✍️'}
 
-    ## Features
+    ## Features 🚀
     \`\`\`The following features are found in # ${
       this.data.name || 'the project:'
     }
     ${this.data.features || 'Can login without auth?'}
     \`\`\`
 
-    ## Installations
+    ## Installations ⚙️
     \`\`\`bash
     ${this.data.install || 'Packages installed or dependencies'}
     \`\`\`
 
-    ## License
+    ## License ⚠️
     MIT
     `;
   }
@@ -46,7 +46,7 @@ export class ReadmeGeneratorComponent {
     navigator.clipboard
       .writeText(this.markdown)
       .then(() => {
-        this.copyMessage = '✅ Copied to clipboard!';
+        this.copyMessage = '⭐️ Copied to clipboard!';
         setTimeout(() => (this.copyMessage = ''), 2000);
       })
       .catch(() => {

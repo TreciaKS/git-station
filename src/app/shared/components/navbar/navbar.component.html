@@ -1,4 +1,4 @@
-<nav class="relative px-16 py-4 max-md:px-2">
+<nav class="sticky top-0 px-28 py-4 max-lg:px-6 text-lg bg-(--color-azure-100) z-50">
   <div class="relative flex items-center justify-between">
     <a
       href="https://treciaks-dev.vercel.app"
@@ -9,15 +9,15 @@
       <img
         src="/logo.png"
         alt="TreciaKS Logo"
-        class="w-10 h-10 rounded-full shadow"
+        class="w-15 h-15 rounded-full shadow-md max-md:w-12 max-md:h-12"
       />
     </a>
 
-    <button (click)="toggleMenu()" class="absolute text-2xl right-4 md:hidden">
+    <button (click)="toggleMenu()" class="absolute text-3xl right-4 md:hidden">
       ☰
     </button>
 
-    <ul class="flex items-center space-x-5 tracking-wide max-md:hidden">
+    <ul class="flex items-center space-x-8 tracking-wide max-md:hidden text-lg">
       <li>
         <a
           routerLink="/"

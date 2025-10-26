@@ -1,77 +1,81 @@
-<div class="max-w-4xl mx-auto">
-  <h2 class="mb-3 text-xl font-semibold">README Generator</h2>
-
-  <form (ngSubmit)="generate()" class="p-6 space-y-4 bg-white rounded shadow">
+<section
+  class="flex space-x-2 mx-auto max-md:flex-col text-(--color-azure-500) max-lg:py-10"
+>
+  <form (ngSubmit)="generate()" class="p-6 space-y-4 w-full rounded">
+    <h2 class="mb-3 text-xl font-semibold">README Generator</h2>
     <div>
-      <label class="block text-sm text-gray-600">Project Name</label>
+      <p class="block text-sm pb-1">Project Name</p>
       <input
         [(ngModel)]="data.name"
         name="name"
-        class="w-full px-3 py-2 border rounded"
+        class="w-full px-3 py-2 border border-(--color-azure-300) rounded focus:outline-none focus:ring-2 focus:ring-(--color-azure-200)"
       />
     </div>
 
     <div>
-      <label class="block text-sm text-gray-600"> Short Description</label>
+      <p class="block text-sm pb-1">Short Description</p>
       <textarea
         [(ngModel)]="data.description"
         name="description"
-        class="w-full px-3 py-2 border rounded"
+        class="w-full px-3 py-2 border border-(--color-azure-300) rounded focus:outline-none focus:ring-2 focus:ring-(--color-azure-200)"
+        rows="5"
+        cols="30"
+      ></textarea>
+    </div>
+
+    <div>
+      <p class="block text-sm pb-1">Features</p>
+      <textarea
+        [(ngModel)]="data.features"
+        name="features"
+        class="w-full px-3 py-2 border border-(--color-azure-300) rounded focus:outline-none focus:ring-2 focus:ring-(--color-azure-200) no-resize"
+        placeholder="A favourites section..."
         rows="6"
         cols="30"
       ></textarea>
     </div>
 
-      <div>
-        <label class="block text-sm text-gray-600"> Features </label>
-        <textarea
-          [(ngModel)]="data.features"
-          name="features"
-          class="w-full px-3 py-2 border rounded no-resize"
-          placeholder="A favourites section..."
-          rows="6"
-          cols="30"
-        ></textarea>
-      </div>
+    <div>
+      <p class="block text-sm pb-1">Install</p>
+      <textarea
+        [(ngModel)]="data.install"
+        name="install"
+        class="w-full px-3 py-2 border border-(--color-azure-300) rounded focus:outline-none focus:ring-2 focus:ring-(--color-azure-200) no-resize"
+        placeholder="Packages installed or dependencies"
+        rows="6"
+        cols="30"
+      ></textarea>
+    </div>
 
-      <div>
-        <label class="block text-sm text-gray-600">Install</label>
-        <textarea
-          [(ngModel)]="data.install"
-          name="install"
-          class="w-full px-3 py-2 border rounded no-resize"
-          placeholder="Packages installed or dependencies"
-          rows="6"
-          cols="30"
-        ></textarea>
-      </div>
-
-    <div class="flex gap-2">
-      <button type="submit" class="px-4 py-2 text-white bg-blue-600 rounded">
+    <div class="flex gap-2 relative">
+      <button
+        type="submit"
+        class="px-4 py-2 text-white bg-(--color-azure-300) cursor-pointer rounded"
+      >
         Generate
       </button>
       <button
         type="button"
         (click)="copy()"
-        class="px-4 py-2 bg-gray-200 rounded"
+        class="px-4 py-2 border border-(--color-azure-300) cursor-pointer rounded"
       >
         Copy
       </button>
+      <p
+        *ngIf="copyMessage"
+        class="ml-2 text-sm text-(--color-azure-400) transition-opacity duration-300 absolute right-0 bottom-0"
+      >
+        {{ copyMessage }}
+      </p>
     </div>
-    <span
-      *ngIf="copyMessage"
-      class="ml-2 text-sm text-green-600 transition-opacity duration-300"
-    >
-      {{ copyMessage }}
-    </span>
   </form>
 
-  <div class="mt-6">
-    <h3 class="font-medium">Preview</h3>
+  <div class="w-full p-6 h-190 max-md:pb-28">
+    <h3 class="font-semibold max-md:pl-2 text-xl">Preview</h3>
     <pre
-      class="p-4 mt-2 overflow-auto text-white rounded bg-slate-900"
+      class="p-5 overflow-auto text-white rounded-md bg-(--color-azure-500) shadow-md mt-8 h-full"
       style="white-space: pre-wrap"
       >{{ markdown }}</pre
     >
   </div>
-</div>
+</section>

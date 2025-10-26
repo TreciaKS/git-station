@@ -21,3 +21,32 @@ html {
   background-color: var(--color-azure-100);
   color: var(--color-azure-500);
 }
+
+
+ * {
+  --sb-track-color: var(--color-azure-500);
+  --sb-thumb-color: var(--color-azure-300);
+  --sb-size: 9px;
+}
+
+::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-azure-100);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+  border: 2px solid var(--color-azure-500);
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
+}
