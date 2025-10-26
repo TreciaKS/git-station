@@ -26,7 +26,7 @@
 | Frontend | **Angular 19**, **TypeScript**, **Tailwind CSS** |
 | Animations | **ngx-lottie**, **lottie-web** |
 | API | **GitHub REST API v3** |
-| Hosting | **GitHub Pages** |
+| Hosting | **Vercel** |
 
 ---
 
