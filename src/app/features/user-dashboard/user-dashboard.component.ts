@@ -7,6 +7,7 @@ import { NotFoundComponent } from '../../shared/components/not-found/not-found.c
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { RepoCardComponent } from '../../shared/components/repo-card/repo-card.component';
 import { AstroSideComponent } from "../../shared/components/astro-side/astro-side.component";
+import { truncateText } from '../../core/utils'
 
 @Component({
   selector: 'app-user-dashboard',
@@ -22,13 +23,14 @@ import { AstroSideComponent } from "../../shared/components/astro-side/astro-sid
   templateUrl: './user-dashboard.component.html',
 })
 export class UserDashboardComponent {
-  username = '';
+  username = 'TreciaKS';
   user: GithubUser | null = null;
   repos: GithubRepo[] = [];
   loading = false;
   error = '';
   emptySearch = false;
   notFound = false;
+  truncateText = truncateText;
 
   constructor(private gh: GithubService) {}
 
