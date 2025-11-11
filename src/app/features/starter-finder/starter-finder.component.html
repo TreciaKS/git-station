@@ -1,7 +1,7 @@
 <section class="relative overflow-hidden">
   <app-astro-side></app-astro-side>
   <div
-    class="w-3/4 absolute top-0 bg-(--color-azure-100) h-full px-20 max-md:px-6 max-lg:pb-20 max-lg:relative max-lg:w-full"
+    class="w-3/4 absolute top-0 bg-(--color-azure-100) px-20 max-md:px-6 max-lg:relative max-lg:w-full py-10"
   >
     <div class="mb-4">
       <div class="py-5">
@@ -34,7 +34,7 @@
     <app-loader *ngIf="loading"></app-loader>
 
     <div
-      class="overflow-y-scroll h-180 grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 max-md:gap-2 overflow-x-hidden"
+      class="overflow-y-scroll h-117 grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-4 max-md:gap-2 overflow-x-hidden max-lg:h-180"
     >
       <app-issue-card
         *ngFor="let issue of issues"
