@@ -22,7 +22,6 @@ html {
   color: var(--color-azure-500);
 }
 
-
  * {
   --sb-track-color: var(--color-azure-500);
   --sb-thumb-color: var(--color-azure-300);
