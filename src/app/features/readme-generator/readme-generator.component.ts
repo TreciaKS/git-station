@@ -21,26 +21,46 @@ export class ReadmeGeneratorComponent {
   copyMessage = '';
 
   generate(): void {
-    this.markdown = `# ${this.data.name || 'Project Title ✨'}
+    const escapeMarkdown = (text: string = ''): string => {
+      return text
+        .replace(/\\/g, '\\\\')
+        .replace(/([#_*`~>\[\]\(\)])/g, '\\$1')
+        .replace(/\n{3,}/g, '\n\n');
+    };
 
-    ${this.data.description || 'Short description ✍️'}
+    const name = escapeMarkdown(this.data.name || 'Project Title ✨');
+    const description = escapeMarkdown(
+      this.data.description || 'Short description ✍️'
+    );
 
-    ## Features 🚀
-    \`\`\`The following features are found in # ${
-      this.data.name || 'the project:'
-    }
-    ${this.data.features || 'Can login without auth?'}
-    \`\`\`
+    const rawFeatures = this.data.features || '';
+    const featuresList = rawFeatures
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0)
+      .map((line) => `- ${escapeMarkdown(line)}`)
+      .join('\n');
 
-    ## Installations ⚙️
-    \`\`\`bash
-    ${this.data.install || 'Packages installed or dependencies'}
-    \`\`\`
+    const rawInstall = this.data.install || '';
+    const installList = rawInstall
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0)
+      .map((line) => `- ${escapeMarkdown(line)}`)
+      .join('\n');
 
-    ## License ⚠️
-    MIT
-    `;
-  }
+    this.markdown = `# ${name}
+
+${description}
+
+${featuresList ? `## Features 🚀\n${featuresList}\n` : ''}
+
+${installList ? `## Installation ⚙️\n${installList}\n` : ''}
+
+## License ⚠️
+MIT
+`;
+}
 
   copy(): void {
     navigator.clipboard
